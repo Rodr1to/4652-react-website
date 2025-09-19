@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+:root{
+  --color-primary: #355C7D;
+  --color-secondary: #6C5B7B;
+  --color-accent: #535C91;
+  --color-surface: #1B1A55;
+  --color-blanco: #FFFFFF;
+  --color-negro: #000000;
+  --color-gris-claro: #CCCCCC;
+  --color-gris-oscuro: #333333; 
+}
+body{
+  font-family: "Urbanist", sans-serif;
+}
+h1{
+  font-size: 64px;
+  font-weight: 200;
+  letter-spacing: -3px;
+}
+h2{
+  font-size: 36px;
+  text-transform: lowercase;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+h3{
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+#nosotros{
+  background-color: var(--color-surface);
+  color: var(--color-blanco);
+}
+#historia{
+  background-color: var(--color-secondary);
+}
+#main-footer{
+  background-color: var(--color-gris-oscuro);
+  color: var(--color-gris-claro);
+  padding: 45px 0;
+}
+.boton-link{
+  background-color: var(--color-accent);
+  color: var(--color-blanco);
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: solid var(--color-accent) 1px;
+  display: inline-block;
+}
+.boton-link:hover{
+  background-color: transparent;
+  color: var(--color-accent);
+}
+.tabla-reporte{
+  border-collapse: collapse;
+  width: 100%;
+}
+.tabla-reporte th,.tabla-reporte td{
+  padding: 8px 12px; 
+}
+.tabla-reporte thead th{
+  background-color: var(--color-surface);
+  color: var(--color-blanco);
+  text-align: left;
+}
+.tabla-reporte td{
+  border: solid 1px var(--color-gris-claro)
+}
+.tabla-reporte tbody tr:nth-child(even){
+  background-color: var(--color-primary)
+}
+.tabla-reporte tbody tr:hover{
+  background-color: var(--color-secondary);
+}
