@@ -1,3 +1,4 @@
+import Envios from "../home/Envios"
 import Eventos from "../home/Eventos"
 import Historia from "../home/Historia"
 import MainBanner from "../home/MainBanner"
@@ -9,6 +10,7 @@ const Inicio = () => {
   return (
         <>
             <MainBanner/>
+            <Envios/>
             <Nosotros/>
             <Noticias/>
             <Historia/>

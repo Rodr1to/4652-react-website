@@ -7,6 +7,7 @@ import Proveedores from './pages/Proveedores'
 import Inversiones from './pages/Inversiones'
 import Perfil from './pages/Perfil'
 import Configuracion from './pages/Configuracion'
+import Empleados from './pages/Empleados'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
           <Route path="/inversiones" element={<Inversiones/>} />
           <Route path="/perfil" element={<Perfil/>} />
           <Route path="/configuracion" element={<Configuracion/>} />
+          <Route path="/empleados" element={<Empleados/>} />
         </Routes>
 
         <MainFooter/>  

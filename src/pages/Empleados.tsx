@@ -1,12 +1,12 @@
 import PageHeader from "../components/PageHeader"
 
-const Inversiones = () => {
-    return (
+const Empleados = () => {
+    return(
         <>
-            <PageHeader pageTitle="Inversiones" pageSubtitle="Haz crecer tu dinero de forma segura y con vision de futuro"/>
+        <PageHeader pageTitle="Empleados" pageSubtitle="Nuestro equipo, nuestro mayor valor"/>
+            <section className='py-20'>
+                <div className='max-w-7xl mx-auto px-3'>
 
-            <section id="inversiones" className="py-20">
-                <div className="max-w-7xl mx-auto px-3">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
                         necessitatibus veniam nam ut atque, amet magnam cumque inventore
@@ -37,8 +37,9 @@ const Inversiones = () => {
                     </p>
                 </div>
             </section>
-        </>
+        </>   
     )
 }
 
-export default Inversiones
+
+export default Empleados
