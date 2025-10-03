@@ -20,13 +20,8 @@ const Proveedores = () => {
         })
     }
 
-
-    return (
-        <>
-        <PageHeader pageTitle="Proveedores" pageSubtitle="Construyendo alianzas solidas para crecer juntos"/>
-            <section id="proveedores" className="py-20">
-                <div className="max-w-7xl mx-auto px-3">
-
+    const dibujarTabla = () => {
+        return(
                     <table className='tabla-reporte'>
                         <thead>
                             <tr>
@@ -51,6 +46,15 @@ const Proveedores = () => {
                             )}
                         </tbody>    
                     </table>
+        )
+    }
+
+    return (
+        <>
+        <PageHeader pageTitle="Proveedores" pageSubtitle="Construyendo alianzas solidas para crecer juntos"/>
+            <section id="proveedores" className="py-20">
+                <div className="max-w-7xl mx-auto px-3">
+                    {dibujarTabla()} 
                 </div>
             </section>
         </>
