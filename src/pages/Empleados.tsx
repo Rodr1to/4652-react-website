@@ -23,6 +23,7 @@ const Empleados = () => {
     const dibujarCuadricula = () => {
         return(
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                
             {listaEmpleados.map(item =>
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <img src={"https://servicios.campus.pe/" + item.foto} alt="Retro gaming setup" className="w-full h-48 object-cover" />
