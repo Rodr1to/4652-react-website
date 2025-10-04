@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader"
 import type { Categoria } from "../types/Categoria"
 import Productos from "../components/Productos"
 
+
 const Tienda = () => {
 
     const [listaCategorias, setListaCategorias] = useState<Categoria[]>([])
@@ -12,7 +13,9 @@ const Tienda = () => {
         leerServicio()
     }, [])
 
-    const leerServicio = () => {
+    const leerServicio = async() => {
+        
+        /*
         fetch("https://servicios.campus.pe/categorias.php")
         .then(response => response.json())
         .then(data => {
@@ -20,6 +23,14 @@ const Tienda = () => {
             setListaCategorias(data)
 
         })
+        */    
+
+        const response = await fetch("https://servicios.campus.pe/categorias.php")
+        const data: Categoria[] = await response.json()
+        console.log(data)
+        setListaCategorias(data)
+        setCategoriaSeleccionada(data[0])
+
     }
 
     const seleccionarCategoria = (itemSeleccionado: Categoria) => {

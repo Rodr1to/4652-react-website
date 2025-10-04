@@ -9,6 +9,8 @@ import Perfil from './pages/Perfil'
 import Configuracion from './pages/Configuracion'
 import Empleados from './pages/Empleados'
 import Tienda from './pages/Tienda'
+import Pagina404 from './pages/Pagina404'
+import ProductoDetalles from './pages/ProductoDetalles'
 
 function App() {
   
@@ -25,6 +27,8 @@ function App() {
           <Route path="/configuracion" element={<Configuracion/>} />
           <Route path="/empleados" element={<Empleados/>} />
           <Route path="/tienda" element={<Tienda/>} />
+          <Route path="/productodetalles/:idproducto" element={<ProductoDetalles/>} />
+          <Route path="*" element={<Pagina404/>} />
         </Routes>
 
         <MainFooter/>  
