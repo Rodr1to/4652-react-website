@@ -1,5 +1,5 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, useLocation } from 'react-router-dom'
 import logo from './../assets/images/logo.png'
 
@@ -62,14 +62,14 @@ export default function MainHeader() {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <button
-              type="button"
-              className="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
+            <Link to="/carrito"
+              className="relative rounded-md px-3 py-2 text-black hover:text-white focus:bg-[var(--color-accent)] focus:text-white focus:outline-none cursor-pointer font-medium"
             >
-              <span className="absolute -inset-1.5" />
-              <span className="sr-only">View notifications</span>
-              <BellIcon aria-hidden="true" className="size-6" />
-            </button>
+              <i className="fa-solid fa-basket-shopping me-1"
+                            title="Carrito de compras"></i>
+              <span>Carrito</span>
+  
+            </Link>
 
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">

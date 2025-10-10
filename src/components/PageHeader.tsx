@@ -9,7 +9,7 @@ const PageHeader = (props: PageHeaderProps) => {
     <header id="page-header" className="shadow-lg py-5">
         <div className="max-w-7xl mx-auto px-3 py-3">
             <h1>{props.pageTitle}</h1>
-            <p>{props.pageSubtitle}</p>
+            <p className="!m-0">{props.pageSubtitle}</p>
         </div>
     </header>
   )
