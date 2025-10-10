@@ -72,7 +72,13 @@ const ProductoDetalles = () => {
                             </tr>
                             <tr>
                                 <th>Calificacion</th>
-                                <td>{productoSeleccionado?.promedioestrellas} ({productoSeleccionado?.totalcalificaciones} calificaciones)</td>
+                                <td>
+                                    {[...Array(5)].map((_, index) => (
+                                        <i className="fa-solid fa-star"></i>
+                                    ))}
+                                    
+
+                                    {productoSeleccionado?.promedioestrellas} ({productoSeleccionado?.totalcalificaciones} calificaciones)</td>
                             </tr>
                             </tbody>
                     </table>
