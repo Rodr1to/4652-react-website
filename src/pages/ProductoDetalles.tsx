@@ -74,11 +74,9 @@ const ProductoDetalles = () => {
                                 <th>Calificacion</th>
                                 <td>
                                     {[...Array(5)].map((_, index) => (
-                                        <i className="fa-solid fa-star"></i>
-                                    ))}
-                                    
-
-                                    {productoSeleccionado?.promedioestrellas} ({productoSeleccionado?.totalcalificaciones} calificaciones)</td>
+                                        <i key={index}  className={ index< productoSeleccionado?.promedioestrellas ? "fa-solid fa-star":"fa-regular fa-star"}></i>
+                                    ))}    
+                                    &nbsp;({productoSeleccionado?.totalcalificaciones} calificaciones)</td>
                             </tr>
                             </tbody>
                     </table>
