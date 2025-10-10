@@ -16,7 +16,11 @@ const Carrito = () => {
             setListaItems(datosCarrito)
 
         }
-    
+        
+        const vaciarCarrito = () => {
+            sessionStorage.removeItem("carritocompras")
+            setListaItems([])
+        }
 
     return (
         <>
@@ -50,6 +54,11 @@ const Carrito = () => {
                             )}
                         </tbody>
                         </table>
+                         <button className='boton-link mt-3 cursor-pointer' onClick={() => vaciarCarrito()
+
+                         }>
+                            Vaciar carrito
+                        </button>
                         </div>
                         <div className="w-full md:w-1/4 px-3">
                         </div>

@@ -11,11 +11,19 @@ export const agregarCarrito = (producto: Producto, cantidadProducto: number) => 
         cantidad: cantidadProducto
     }
 
-    let carrito: ItemCarrito[] = sessionStorage.getItem("carritocompras") == null 
+    const carrito: ItemCarrito[] = sessionStorage.getItem("carritocompras") == null 
                                 ? []
                                 : JSON.parse(sessionStorage.getItem("carritocompras") || "[]");
 
+    const index: number = carrito.findIndex(p => p.idproducto === itemCarrito.idproducto)
 
-    carrito.push(itemCarrito)
+    if(index === -1){
+        carrito.push(itemCarrito)
+    }
+    else{
+        carrito[index].cantidad += cantidadProducto
+    }
+
+
     sessionStorage.setItem("carritocompras", JSON.stringify(carrito))
 }
