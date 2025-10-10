@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import PageHeader from "../components/PageHeader"
 import type { Categoria } from "../types/Categoria"
 import Productos from "../components/Productos"
+import { API_URL } from "../utils"
 
 
 const Tienda = () => {
@@ -25,7 +26,7 @@ const Tienda = () => {
         })
         */    
 
-        const response = await fetch("https://servicios.campus.pe/categorias.php")
+        const response = await fetch(API_URL + "categorias.php")
         const data: Categoria[] = await response.json()
         console.log(data)
         setListaCategorias(data)

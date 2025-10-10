@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader"
 import { useEffect, useState } from "react"
 import type { Producto } from "../types/Producto"
 import "./ProductoDetalles.css"
+import { API_URL } from "../utils"
 
 const ProductoDetalles = () => {
     const params = useParams()
@@ -15,7 +16,7 @@ const ProductoDetalles = () => {
     }, [])
 
     const leerServicio = async() => {
-        const response = await fetch("https://servicios.campus.pe/productos.php?idproducto=" + params.idproducto)
+        const response = await fetch(API_URL + "productos.php?idproducto=" + params.idproducto)
         const data: Producto[] = await response.json()
         console.log(data)
         setProductoSeleccionado(data[0])
@@ -33,7 +34,7 @@ const ProductoDetalles = () => {
                 <div className="max-w-7xl mx-auto px-3">
                     <div className="flex -mx-3">
                      <div className="w-full md:w-1/3 px-3">
-                        <img src={"https://servicios.campus.pe/" + (productoSeleccionado?.imagengrande ? productoSeleccionado.imagengrande : "imagenes/nofoto.jpg")}                     
+                        <img src={API_URL + (productoSeleccionado?.imagengrande ? productoSeleccionado.imagengrande : "imagenes/nofoto.jpg")}                     
                         alt="" className="w-full object-cover px-8 pt-8 transition-transform duration-500 hover:scale-115"/>
                     </div>
                     <div className="w-full md:w-2/3 px-3">

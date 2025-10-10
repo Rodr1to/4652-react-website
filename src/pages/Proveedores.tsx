@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import type { Proveedor } from "../types/Proveedor"
 import PageHeader from "../components/PageHeader"
+import { API_URL } from "../utils"
 
 const Proveedores = () => {
     // Hoook 
@@ -11,7 +12,7 @@ const Proveedores = () => {
     }, [])
 
     const leerServicio = () => {
-        fetch("https://servicios.campus.pe/proveedores")
+        fetch(API_URL + "proveedores")
         .then(response => response.json())
         .then(data => {
             console.log(data)
