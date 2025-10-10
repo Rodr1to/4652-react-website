@@ -43,7 +43,7 @@ const Productos = (props: ProductosProps) => {
                 const precioRebajado = item.preciorebajado
                 const precio = item.precio
                 return(
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden border-1 border-gray-200 text-center relative card-producto">
+                <div key={item.idproducto} className="bg-white rounded-lg shadow-lg overflow-hidden border-1 border-gray-200 text-center relative card-producto">
                 
                 <Link to={"/productodetalles/" + item.idproducto}>
                     <img src={API_URL + (item.imagenchica ? item.imagenchica : "imagenes/nofoto.jpg")}                     

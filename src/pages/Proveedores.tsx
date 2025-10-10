@@ -36,7 +36,7 @@ const Proveedores = () => {
                         </thead>
                         <tbody>
                             {listaProveedores.map(item =>
-                            <tr>
+                            <tr key = {item.idproveedor}>
                                 <td className="text-center">{item.idproveedor}</td>
                                 <td>{item.nombreempresa}</td>
                                 <td>{item.nombrecontacto}</td>
