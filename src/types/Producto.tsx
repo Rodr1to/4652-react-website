@@ -8,4 +8,10 @@ export interface Producto{
     descripcion: string;
     proveedor: string;
     categoria: string;
+    detalle: string;
+    pais: string;
+    unidadesenexistencia: number;
+    promedioestrellas: number;
+    totalcalificaciones: number;
+    telefono: string;    
 }

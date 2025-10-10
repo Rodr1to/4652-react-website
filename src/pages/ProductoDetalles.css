@@ -1,0 +1,9 @@
+.tabla-detalle-producto tr{
+
+    border-bottom: solid 1px var(--color-gris-claro);
+}
+.tabla-detalle-producto tr,
+.tabla-detalle-producto td{
+    padding: 10px 20px; 
+    text-align: left;
+}
