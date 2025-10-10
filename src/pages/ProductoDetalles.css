@@ -1,3 +1,7 @@
+.tabla-detalle-producto{
+    width: 100%;
+    border-collapse: collapse;
+}
 .tabla-detalle-producto tr{
 
     border-bottom: solid 1px var(--color-gris-claro);
