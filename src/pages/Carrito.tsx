@@ -7,60 +7,86 @@ const Carrito = () => {
 
     const [listaItems, setListaItems] = useState<ItemCarrito[]>([])
 
-        useEffect(() => {
-            leerServicio()
-        }, [])
+    const [total, setTotal] = useState(0)
 
-        const leerServicio = () => {
-            const datosCarrito = JSON.parse(sessionStorage.getItem("carritocompras") || "[]")
-            setListaItems(datosCarrito)
+    useEffect(() => {
+        leerServicio()
+    }, [])
 
-        }
-        
-        const vaciarCarrito = () => {
-            sessionStorage.removeItem("carritocompras")
-            setListaItems([])
-        }
+    const leerServicio = () => {
+        const datosCarrito = JSON.parse(sessionStorage.getItem("carritocompras") || "[]")
+        setListaItems(datosCarrito)
+        calcularTotal(datosCarrito)
+    }
+
+    const dibujarTabla = () => {
+        return (
+            <table className='tabla-reporte'>
+                <thead>
+                    <tr>
+                        <th className="!text-center">Codigo</th>
+                        <th>Producto</th>
+                        <th className="!text-end">Precio</th>
+                        <th className="!text-end">Cantidad</th>
+                        <th className="!text-end">Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {listaItems.map(item =>
+                        <tr key={item.idproducto}>
+                            <td className="text-center">{item.idproducto}</td>
+                            <td>{item.nombre}</td>
+                            <td className="!text-end">{item.precio.toFixed(2)}</td>
+                            <td className="!text-end">{item.cantidad}</td>
+                            <td className="!text-end">{(item.precio * item.cantidad).toFixed(2)}</td>
+                            <td><i className="fa-solid fa-xmark cursor-pointer hover:text-red-400 transition-transform 
+                            duration-300 ease-in-out hover:rotate-90" title="Eliminar"
+                            onClick={() => eliminarItem(item)}></i></td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        )
+    }
+
+    const eliminarItem = (item: ItemCarrito) => {
+        const carritoMenos = listaItems.filter(i => i.idproducto !== item.idproducto)
+        setListaItems(carritoMenos)
+        sessionStorage.setItem("carritocompras", JSON.stringify(carritoMenos))
+        calcularTotal(carritoMenos)
+    }
+
+    const vaciarCarrito = () => {
+        sessionStorage.removeItem("carritocompras")
+        setListaItems([])
+        setTotal(0)
+    }
+
+    const calcularTotal = (datosCarrito: ItemCarrito[]) => {
+        const sumTotal = datosCarrito.reduce((acumulador: number, item: ItemCarrito) => acumulador + (item.precio * item.cantidad), 0)
+        setTotal(sumTotal)
+    }
+
 
     return (
         <>
-            <PageHeader pageTitle="Carrito de compras" pageSubtitle=""/>
+            <PageHeader pageTitle="Carrito de compras" pageSubtitle="" />
 
             <section className="py-20">
                 <div className="max-w-7xl mx-auto px-3">
                     <div className="flex -mx-3">
                         <div className="w-full md:w-3/4 px-3">
-                        <table className='tabla-reporte'>
-                        <thead>
-                            <tr>
-                                <th className="!text-center">Codigo</th>
-                                <th>Producto</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Subtotal</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {listaItems.map(item =>
-                            <tr>
-                                <td className="text-center">{item.idproducto}</td>
-                                <td>{item.nombre}</td>
-                                <td>{item.precio}</td>
-                                <td>{item.cantidad}</td>
-                                <td>{item.precio * item.cantidad}</td>
-                                <td></td>
-                            </tr>
-                            )}
-                        </tbody>
-                        </table>
-                         <button className='boton-link mt-3 cursor-pointer' onClick={() => vaciarCarrito()
+                            {dibujarTabla()}
+                            <button className='boton-link mt-3 cursor-pointer' onClick={() => vaciarCarrito()
 
-                         }>
-                            Vaciar carrito
-                        </button>
+                            }>
+                                Vaciar carrito
+                            </button>
                         </div>
-                        <div className="w-full md:w-1/4 px-3">
+                        <div className="w-full md:w-1/4 p-5 bg-gray-200">
+                            <h3>TOTAL DEL CARRITO</h3>
+                            <p>S/ {total.toFixed(2)}</p>
                         </div>
                     </div>
                 </div>
