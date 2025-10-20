@@ -6,17 +6,19 @@ import type { Cliente } from "../types/Cliente"
 const Clientes = () => {
     // Hoook 
     const [listaClientes, setListaClientes] = useState<Cliente[]>([])
+    const [filasPagina, setFilasPagina] = useState(10)
+    const [numeroPagina, setNumeroPagina] = useState(1)
 
     useEffect(() => {
         leerServicio()
     }, [])
 
     const leerServicio = () => {
-        fetch(API_URL + "clientes.php?filas_pagina=10&numero_pagina=2")
+        fetch(API_URL + `clientes_paginacion.php?filas_pagina=${filasPagina}&numero_pagina=${numeroPagina}`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            setListaClientes(data)
+            setListaClientes(data.clientes)
 
         })
     }
