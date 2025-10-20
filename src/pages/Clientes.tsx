@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import PageHeader from "../components/PageHeader"
 import { API_URL } from "../utils"
 import type { Cliente } from "../types/Cliente"
+import "./Clientes.css"
 
 const Clientes = () => {
     // Hoook 
@@ -71,14 +72,23 @@ const Clientes = () => {
 
     const dibujarNavegacion = () => {
         return (
-            <>
+            <nav id="barra-paginacion">
                 <button onClick={retroceder}>
                     Retroceder
                 </button>
+
+                {Array.from({length:totalPaginas}, (_, index) => {
+                    const paginaNum = index + 1
+                    const isActive = paginaNum === numeroPagina
+                    return(
+                    <button className={`${isActive ? "bg-black text-white":""}`}
+                    onClick={() => setNumeroPagina(paginaNum)}>{paginaNum}</button>
+                    )
+                })}
                 <button onClick={avanzar}>
                     Avanzar
                 </button>
-            </>
+            </nav>
         )
     }
 
