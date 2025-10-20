@@ -13,14 +13,12 @@ const Clientes = () => {
         leerServicio()
     }, [])
 
-    const leerServicio = () => {
-        fetch(API_URL + `clientes_paginacion.php?filas_pagina=${filasPagina}&numero_pagina=${numeroPagina}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            setListaClientes(data.clientes)
-
-        })
+    const leerServicio = async() => {
+        const ruta = `${API_URL}clientes_paginacion.php?filas_pagina=${filasPagina}&numero_pagina=${numeroPagina}`
+        const response = await fetch(ruta)
+        const data = await response.json
+        console.log(data)
+        setListaClientes(data.clientes)
     }
 
     const dibujarTabla = () => {
