@@ -15,7 +15,7 @@ const Clientes = () => {
         leerServicio()
     }, [numeroPagina, filasPagina])
 
-    const leerServicio = async() => {
+    const leerServicio = async () => {
         const ruta = `${API_URL}clientes_paginacion.php?filas_pagina=${filasPagina}&numero_pagina=${numeroPagina}`
         const response = await fetch(ruta)
         const data = await response.json()
@@ -28,60 +28,67 @@ const Clientes = () => {
     }
 
     const dibujarTabla = () => {
-        return(
-                    <table className='tabla-reporte'>
-                        <thead>
-                            <tr>
-                                <th className="!text-center">Codigo</th>
-                                <th>Empresa</th>
-                                <th>Contacto</th>
-                                <th>Cargo</th>
-                                <th>Ciudad</th>
-                                <th className="!text-right">Pais</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {listaClientes.map(item =>
-                            <tr key = {item.idcliente}>
-                                <td className="text-center">{item.idcliente}</td>
-                                <td>{item.empresa}</td>
-                                <td>{item.nombres}</td>
-                                <td>{item.cargo}</td>
-                                <td>{item.ciudad}</td>
-                                <td className="text-right">{item.pais}</td>
-                            </tr>
-                            )}
-                        </tbody>    
-                    </table>
+        return (
+            <table className='tabla-reporte'>
+                <thead>
+                    <tr>
+                        <th className="!text-center">Codigo</th>
+                        <th>Empresa</th>
+                        <th>Contacto</th>
+                        <th>Cargo</th>
+                        <th>Ciudad</th>
+                        <th className="!text-right">Pais</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {listaClientes.map(item =>
+                        <tr key={item.idcliente}>
+                            <td className="text-center">{item.idcliente}</td>
+                            <td>{item.empresa}</td>
+                            <td>{item.nombres}</td>
+                            <td>{item.cargo}</td>
+                            <td>{item.ciudad}</td>
+                            <td className="text-right">{item.pais}</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
         )
     }
 
     const retroceder = () => {
-        if(numeroPagina > 1){
-        setNumeroPagina(numeroPagina - 1)
+        if (numeroPagina > 1) {
+            setNumeroPagina(numeroPagina - 1)
         }
     }
 
     const avanzar = () => {
-        if(numeroPagina < totalPaginas){
-        setNumeroPagina(numeroPagina + 1)
+        if (numeroPagina < totalPaginas) {
+            setNumeroPagina(numeroPagina + 1)
         }
+    }
+
+
+    const dibujarNavegacion = () => {
+        return (
+            <>
+                <button onClick={retroceder}>
+                    Retroceder
+                </button>
+                <button onClick={avanzar}>
+                    Avanzar
+                </button>
+            </>
+        )
     }
 
     return (
         <>
-        <PageHeader pageTitle="Clientes" pageSubtitle=""/>
+            <PageHeader pageTitle="Clientes" pageSubtitle="" />
             <section id="clientes" className="py-20">
                 <div className="max-w-7xl mx-auto px-3">
-                    <button onClick={retroceder}>
-                        Retroceder                                        
-                    </button>
-                    <button onClick={avanzar}>
-                        Avanzar
-                    </button>
-
-
-                    {dibujarTabla()} 
+                    {dibujarNavegacion()}
+                    {dibujarTabla()}
                 </div>
             </section>
         </>
