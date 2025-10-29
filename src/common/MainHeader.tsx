@@ -9,6 +9,7 @@ const navigation = [
   { name: 'Empleados', url: '/empleados' },
   { name: 'Tienda', url: '/tienda' },
   { name: 'Clientes', url: '/clientes' },
+  { name: 'Clientes ordernar', url: '/clientesordenar' },
 ]
 
 function classNames(...classes: string[]) {
