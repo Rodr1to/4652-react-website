@@ -20,9 +20,11 @@ const Carrito = () => {
     }
 
     const actualizarCantidad = (idproducto: number, nuevaCantidad: number) => {
-        if (nuevaCantidad<1){
+        console.log(nuevaCantidad)
+        if (nuevaCantidad<1 || isNaN(nuevaCantidad) ){
             return
         }
+        
         const carritoActualizado = listaItems.map(item => {
             if(item.idproducto === idproducto){
                 return {...item, cantidad: nuevaCantidad}
