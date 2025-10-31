@@ -24,7 +24,7 @@ const Carrito = () => {
         if (nuevaCantidad<1 || isNaN(nuevaCantidad) ){
             return
         }
-        
+
         const carritoActualizado = listaItems.map(item => {
             if(item.idproducto === idproducto){
                 return {...item, cantidad: nuevaCantidad}
@@ -55,12 +55,24 @@ const Carrito = () => {
                             <td className="text-center">{item.idproducto}</td>
                             <td>{item.nombre}</td>
                             <td className="!text-end">{item.precio.toFixed(2)}</td>
-                            <td className="!text-end">
+                            <td className="items-center flex justify-center">
+                                <button onClick={() => actualizarCantidad(item.idproducto, item.cantidad - 1)}
+                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded-full shadow-lg h-4 w-4 flex items-center justify-center transition duration-300 ease-in-out">
+
+  -
+
+</button>
                                 <input type="number" min="1"
                                     value={item.cantidad}
                                     className="w-16 text-end mx-2 border-gray-300 hover:bg-gray-300 rounded"
                                     onChange={(event) => actualizarCantidad(item.idproducto, parseInt(event.target.value))}
                                 />
+                                <button onClick={() => actualizarCantidad(item.idproducto, item.cantidad + 1)}
+                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded-full shadow-lg h-4 w-4 flex items-center justify-center transition duration-300 ease-in-out">
+
+  +
+
+</button>
                             </td>
                             <td className="!text-end">{(item.precio * item.cantidad).toFixed(2)}</td>
                             <td><i className="fa-solid fa-xmark cursor-pointer hover:text-red-400 transition-transform 

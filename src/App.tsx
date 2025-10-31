@@ -14,6 +14,7 @@ import ProductoDetalles from './pages/ProductoDetalles'
 import Carrito from './pages/Carrito'
 import Clientes from './pages/Clientes'
 import ClientesOrdenar from './pages/ClientesOrdenar'
+import Directores from './pages/Directores'
 
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
           <Route path="/tienda" element={<Tienda/>} />
           <Route path="/productodetalles/:idproducto" element={<ProductoDetalles/>} />
           <Route path="/clientes" element={<Clientes/>} />
-          <Route path="carrito" element={<Carrito/>} />
+          <Route path="/carrito" element={<Carrito/>} />
+          <Route path="/directores" element={<Directores/>} />
           <Route path="/clientesordenar" element={<ClientesOrdenar/>} />
           <Route path="*" element={<Pagina404/>} />
         </Routes>
