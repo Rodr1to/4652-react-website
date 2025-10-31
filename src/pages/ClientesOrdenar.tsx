@@ -25,16 +25,31 @@ const ClientesOrdenar = () => {
     }
 
     const dibujarTabla = () => {
+        const IconoOrden = (nombreColumna: String) => {
+            if (nombreColumna === columna) {
+                const iconoClase = tipoOrden === "ASC" ? "fa-caret-up" : "fa-caret-down"
+
+                return (
+                    <i className={`fa-solid ${iconoClase}`}></i>       
+                )
+            }
+        }
+
         return (
             <table className='tabla-reporte'>
                 <thead>
                     <tr>
                         <th className="!text-center">Codigo</th>
-                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "empresa" >Empresa <i className="fa-solid fa-caret-up"></i></th>
-                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "nombres">Contacto</th>
-                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "cargo">Cargo</th>
-                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "ciudad">Ciudad</th>
-                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "pais">Pais</th>
+                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "empresa" >
+                            Empresa {IconoOrden("empresa")}</th>
+                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "nombres">
+                            Contacto {IconoOrden("nombres")}</th>
+                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "cargo">
+                            Cargo {IconoOrden("cargo")}</th>
+                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "ciudad">
+                            Ciudad {IconoOrden("ciudad")}</th>
+                        <th onClick={(event) => seleccionarColumna(event)} data-columna = "pais">
+                            Pais {IconoOrden("pais")}</th>
                     </tr>
                 </thead>
                 <tbody>
