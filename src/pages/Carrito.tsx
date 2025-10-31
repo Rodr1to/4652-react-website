@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-
 import type { ItemCarrito } from "../types/ItemCarrito"
 import PageHeader from "../components/PageHeader"
 
@@ -20,6 +19,21 @@ const Carrito = () => {
         calcularTotal(datosCarrito)
     }
 
+    const actualizarCantidad = (idproducto: number, nuevaCantidad: number) => {
+        if (nuevaCantidad<1){
+            return
+        }
+        const carritoActualizado = listaItems.map(item => {
+            if(item.idproducto === idproducto){
+                return {...item, cantidad: nuevaCantidad}
+            }
+            return item
+        })
+        setListaItems(carritoActualizado)
+        sessionStorage.setItem("carritocompras", JSON.stringify(carritoActualizado))
+        calcularTotal(carritoActualizado)
+    }    
+
     const dibujarTabla = () => {
         return (
             <table className='tabla-reporte'>
@@ -39,7 +53,13 @@ const Carrito = () => {
                             <td className="text-center">{item.idproducto}</td>
                             <td>{item.nombre}</td>
                             <td className="!text-end">{item.precio.toFixed(2)}</td>
-                            <td className="!text-end">{item.cantidad}</td>
+                            <td className="!text-end">
+                                <input type="number" min="1"
+                                    value={item.cantidad}
+                                    className="w-16 text-end mx-2 border-gray-300 hover:bg-gray-300 rounded"
+                                    onChange={(event) => actualizarCantidad(item.idproducto, parseInt(event.target.value))}
+                                />
+                            </td>
                             <td className="!text-end">{(item.precio * item.cantidad).toFixed(2)}</td>
                             <td><i className="fa-solid fa-xmark cursor-pointer hover:text-red-400 transition-transform 
                             duration-300 ease-in-out hover:rotate-90" title="Eliminar"
