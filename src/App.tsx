@@ -15,6 +15,7 @@ import Carrito from './pages/Carrito'
 import Clientes from './pages/Clientes'
 import ClientesOrdenar from './pages/ClientesOrdenar'
 import Directores from './pages/Directores'
+import Login from './pages/Login'
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/carrito" element={<Carrito/>} />
           <Route path="/directores" element={<Directores/>} />
           <Route path="/clientesordenar" element={<ClientesOrdenar/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="*" element={<Pagina404/>} />
         </Routes>
 

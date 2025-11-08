@@ -92,20 +92,21 @@ export default function MainHeader() {
               >
                 <MenuItem>
                   <Link
+                    to='/login'
+                    className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:outline-hidden"
+                  >
+                    Iniciar sesión
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link
                     to='/perfil'
                     className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:outline-hidden"
                   >
                     Perfil
                   </Link>
                 </MenuItem>
-                <MenuItem>
-                  <Link
-                    to='/configuracion'
-                    className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:outline-hidden"
-                  >
-                    Configuración
-                  </Link>
-                </MenuItem>
+
                 <MenuItem>
                   <a
                     href="#"
