@@ -2,16 +2,8 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, useLocation } from 'react-router-dom'
 import logo from './../assets/images/logo.png'
+import { navigation } from '../data/MainData'
 
-const navigation = [
-  { name: 'Inversiones', url: '/inversiones' },
-  { name: 'Proveedores', url: '/proveedores' },
-  { name: 'Empleados', url: '/empleados' },
-  { name: 'Tienda', url: '/tienda' },
-  { name: 'Directores', url: '/directores' }, 
-  { name: 'Clientes', url: '/clientes' },
-  { name: 'Clientes ordernar', url: '/clientesordenar' },
-]
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -48,7 +40,7 @@ export default function MainHeader() {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                {navigation.map((item) => (
+                {navigation().map((item) => (
                   <Link
                     key={item.name}
                     to={item.url}
@@ -123,7 +115,7 @@ export default function MainHeader() {
 
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
-          {navigation.map((item) => (
+          {navigation().map((item) => (
             <Link
               key={item.name}
               to={item.url}

@@ -1,9 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import PageHeader from "../components/PageHeader"
 import { API_URL } from "../utils"
+import { useAuth } from "../AuthContext"
+import { useNavigate } from "react-router-dom"
 
 
 const Login = () => {
+
+    const navigate = useNavigate()
+    const { isAuthenticated, login } = useAuth()
+
+    useEffect (() => {
+        if (isAuthenticated) {    
+            alert("Ya has iniciado sesión")
+            navigate("/perfil")
+    }
+    }, [isAuthenticated, navigate])
+
     const [correoTelefono, setCorreoTelefono] = useState("")
     const [clave, setClave] = useState("")
     const [mostrarClave, setMostrarClave] = useState(false)
@@ -20,6 +33,7 @@ const Login = () => {
                 method: "POST",
             })
             const data: string = await response.text()
+            console.log(data)
             switch (data) {
                 case "-1":
                     setErrorMessage("Error: Correo o teléfono no encontrado")
@@ -29,6 +43,9 @@ const Login = () => {
                     break
                 default:
                     setErrorMessage("")
+                    const datosUsuario = JSON.parse(data)
+                    login(datosUsuario[0].nombre)
+                    navigate("/perfil")
                     break
             }
         } catch (err) {

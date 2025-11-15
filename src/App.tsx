@@ -16,6 +16,7 @@ import Clientes from './pages/Clientes'
 import ClientesOrdenar from './pages/ClientesOrdenar'
 import Directores from './pages/Directores'
 import Login from './pages/Login'
+import PrivateRoute from './PrivateRoute'
 
 
 function App() {
@@ -34,10 +35,14 @@ function App() {
           <Route path="/empleados" element={<Empleados/>} />
           <Route path="/tienda" element={<Tienda/>} />
           <Route path="/productodetalles/:idproducto" element={<ProductoDetalles/>} />
-          <Route path="/clientes" element={<Clientes/>} />
+          
           <Route path="/carrito" element={<Carrito/>} />
-          <Route path="/directores" element={<Directores/>} />
-          <Route path="/clientesordenar" element={<ClientesOrdenar/>} />
+          <Route element ={<PrivateRoute/>}>
+            <Route path="/directores" element={<Directores/>} />
+            <Route path="/clientesordenar" element={<ClientesOrdenar/>} />
+            <Route path="/clientes" element={<Clientes/>} />
+          </Route>
+          
           <Route path="/login" element={<Login/>} />
           <Route path="*" element={<Pagina404/>} />
         </Routes>

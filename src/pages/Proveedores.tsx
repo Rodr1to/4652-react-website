@@ -6,11 +6,14 @@ import { API_URL } from "../utils"
 const Proveedores = () => {
     // Hoook 
     const [listaProveedores, setListaProveedores] = useState<Proveedor[]>([])
+    const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
         leerServicio()
     }, [])
 
+/*
     const leerServicio = () => {
         fetch(API_URL + "proveedores")
         .then(response => response.json())
@@ -19,7 +22,15 @@ const Proveedores = () => {
             setListaProveedores(data)
 
         })
-    }
+} */
+ const leerServicio = async() => {
+           const response = await fetch(API_URL + "proveedores.php")
+           const data: Proveedor[] = await response.json()
+           console.log(data)
+           setListaProveedores(data)
+           setLoading(false)
+}
+
 
     const dibujarTabla = () => {
         return(
@@ -50,12 +61,20 @@ const Proveedores = () => {
         )
     }
 
+    const dibujarPrecarga = () => {
+        return (
+            <span className="loader"></span>
+        )
+    }
     return (
         <>
         <PageHeader pageTitle="Proveedores" pageSubtitle="Construyendo alianzas solidas para crecer juntos"/>
             <section id="proveedores" className="py-20">
                 <div className="max-w-7xl mx-auto px-3">
-                    {dibujarTabla()} 
+                    {loading === true
+                        ?dibujarPrecarga()
+                        :dibujarTabla()
+                    }
                 </div>
             </section>
         </>

@@ -1,6 +1,10 @@
+import { useAuth } from "../AuthContext"
+import { useNavigate } from "react-router-dom"
 const Perfil = () => {
+    const navigate = useNavigate()
+    const { logout } = useAuth()
     return (
-        <section id="perfil" className="py-20">
+        <section id='perfil' className='py-20'>
             <div className="max-w-7xl mx-auto px-3">
                 <h1>Perfil</h1>
                 <p>
@@ -17,23 +21,14 @@ const Perfil = () => {
                     eveniet magni. Voluptatem soluta fugit reiciendis ad, laboriosam iste
                     accusamus, amet beatae alias error maiores.
                 </p>
-                <p>
-                    Fuga nulla similique iure, minima suscipit possimus incidunt saepe
-                    ducimus voluptates culpa nam sed numquam adipisci accusantium autem a
-                    consequuntur repudiandae deserunt maiores magni? Voluptatem libero
-                    inventore a explicabo minus dolorum error aliquid enim facere officiis
-                    asperiores ullam cum mollitia earum debitis quisquam incidunt
-                    adipisci, voluptates doloremque veritatis alias minima. Dignissimos
-                    quas in quos repellendus itaque, esse consequuntur quis voluptatum
-                    deleniti dolor ex, accusantium distinctio quibusdam totam? Aliquam,
-                    accusamus doloremque nihil sapiente eligendi nam enim amet,
-                    consectetur totam adipisci sint placeat at asperiores optio quasi
-                    earum accusantium nobis nemo dolores eos ipsam fugiat dolor non.
-                    Tempore laudantium deleniti maxime ullam!
-                </p>
+                <button className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-150"
+                    onClick={() => {
+                        logout()
+                        navigate("/login")    
+                    }}
+                    >Cerrar sesión</button>
             </div>
         </section>
     )
 }
-
 export default Perfil
